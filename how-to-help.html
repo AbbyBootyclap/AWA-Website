@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Help | Amherst All-Wheels Skate Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #D4622A;
+    --orange-light: #E8845A;
+    --cream: #F5F0E8;
+    --black: #111111;
+    --dark: #1A1A1A;
+    --mid: #444;
+    --light-gray: #E8E4DC;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--black); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px; background: var(--black);
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--white); line-height: 1; }
+  .nav-logo-text span { color: var(--orange); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links .nav-cta { background: var(--orange); color: var(--white); padding: 8px 18px; font-size: 0.65rem; }
+  .nav-links .nav-cta:hover { background: var(--orange-light); color: var(--white); }
+
+  .page-hero {
+    background: var(--black);
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: 'HELP';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30vw;
+    color: rgba(212,98,42,0.04);
+    right: -2vw;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .page-hero-inner { max-width: 800px; position: relative; z-index: 1; }
+
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
+
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.95; color: var(--white); margin-bottom: 24px; }
+  .page-title em { color: var(--orange); font-style: normal; }
+
+  .page-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 540px; }
+
+  section { padding: 80px 60px; }
+
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--orange); }
+
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; letter-spacing: 0.02em; margin-bottom: 32px; }
+
+  /* WAYS TO HELP */
+  #ways { background: var(--cream); }
+  .ways-inner { max-width: 1100px; margin: 0 auto; }
+
+  .ways-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .way-card {
+    background: var(--white);
+    padding: 52px 44px;
+    position: relative;
+    border-top: 3px solid var(--light-gray);
+    transition: border-color 0.3s;
+  }
+
+  .way-card:hover { border-top-color: var(--orange); }
+
+  .way-card.featured { background: var(--black); color: var(--white); border-top-color: var(--orange); }
+  .way-card.alt { background: var(--orange); color: var(--white); border-top-color: transparent; }
+
+  .way-icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+  .way-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.04em; margin-bottom: 14px; }
+
+  .way-desc { font-size: 0.95rem; line-height: 1.7; opacity: 0.7; margin-bottom: 28px; }
+  .way-card.featured .way-desc, .way-card.alt .way-desc { opacity: 0.8; }
+
+  .btn-primary { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--orange); color: var(--white); padding: 14px 28px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-primary:hover { background: var(--black); }
+
+  .btn-white-outline { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 28px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-white-outline:hover { background: rgba(255,255,255,0.1); }
+
+  .btn-dark { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--white); color: var(--black); padding: 14px 28px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-dark:hover { background: var(--black); color: var(--white); }
+
+  /* SPREAD THE WORD */
+  #spread { background: var(--black); color: var(--white); }
+  .spread-inner { max-width: 1100px; margin: 0 auto; }
+  .spread-inner .section-title { color: var(--white); }
+  .spread-inner .section-label { }
+
+  .share-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .share-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 36px 32px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .share-card:hover { border-color: var(--orange); background: rgba(212,98,42,0.05); }
+
+  .share-icon { font-size: 2rem; margin-bottom: 16px; }
+  .share-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; margin-bottom: 10px; color: var(--white); }
+  .share-text { font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
+
+  /* SURVEY SECTION */
+  #survey-section {
+    background: var(--orange);
+    padding: 100px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .survey-text-block { max-width: 600px; }
+  .survey-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); line-height: 1.05; margin-bottom: 16px; }
+  .survey-body { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 2px solid var(--orange); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand svg { width: 32px; height: 32px; }
+  .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white); }
+  .footer-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 30px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .page-hero { padding: 120px 30px 60px; }
+    .ways-grid { grid-template-columns: 1fr; }
+    .share-options { grid-template-columns: 1fr; }
+    #survey-section { padding: 60px 30px; flex-direction: column; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#need">The Need</a></li>
+    <li><a href="index.html#proposal">Proposal</a></li>
+    <li><a href="how-to-help.html" style="color:#D4622A">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Get Involved</div>
+    <h1 class="page-title">Help Us<br>Build <em>This.</em></h1>
+    <p class="page-subtitle">This park happens because community members show up. Here's everything you can do right now — it doesn't take much time, and it makes a real difference.</p>
+  </div>
+</div>
+
+<section id="ways">
+  <div class="ways-inner">
+    <div class="section-label">Take Action</div>
+    <h2 class="section-title">Ways to Get<br>Involved</h2>
+
+    <div class="ways-grid">
+      <div class="way-card featured">
+        <div class="way-icon">📋</div>
+        <div class="way-title">Take the Survey</div>
+        <div class="way-desc">The most important thing you can do right now. Your responses directly inform our proposal to the town and demonstrate community demand. Takes 3 minutes.</div>
+        <a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="btn-white-outline">Complete the Survey →</a>
+      </div>
+
+      <div class="way-card alt">
+        <div class="way-icon">🏛️</div>
+        <div class="way-title">Attend Town Meetings</div>
+        <div class="way-desc">Show up. Your presence at CPA hearings, Recreation Committee meetings, and Town Council sessions is visible, powerful, and free. We'll email you dates and agendas.</div>
+        <a href="mailto:allwheelsamherst@gmail.com?subject=I want to attend town meetings" class="btn-dark">Get Meeting Alerts</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">📢</div>
+        <div class="way-title">Advocate in Your Community</div>
+        <div class="way-desc">Tell your neighbors, your kids' teachers, your coach, your PTO. Share our website. Post on Amherst community Facebook groups. Word of mouth is how this grows.</div>
+        <a href="#spread" class="btn-primary">Sharing Tips</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">✍️</div>
+        <div class="way-title">Gather Signatures</div>
+        <div class="way-desc">We're collecting petition signatures to show the breadth of support. Print a petition sheet, take it to your school, workplace, or neighborhood and collect names.</div>
+        <a href="mailto:allwheelsamherst@gmail.com?subject=I want to gather signatures" class="btn-primary">Request a Petition</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">🎉</div>
+        <div class="way-title">Volunteer at Events</div>
+        <div class="way-desc">We'll be tabling at town events, farmers markets, and school events throughout the year. Help us staff a table, hand out flyers, and talk to community members.</div>
+        <a href="mailto:allwheelsamherst@gmail.com?subject=I want to volunteer" class="btn-primary">Volunteer</a>
+      </div>
+
+      <div class="way-card">
+        <div class="way-icon">💰</div>
+        <div class="way-title">Fundraise or Sponsor</div>
+        <div class="way-desc">Phase 1 is funded through CPA, but full construction will require community fundraising. If you're interested in organizing a fundraiser or discussing sponsorship, reach out.</div>
+        <a href="mailto:allwheelsamherst@gmail.com?subject=Fundraising interest" class="btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spread">
+  <div class="spread-inner">
+    <div class="section-label">Amplify</div>
+    <h2 class="section-title">Spread the Word</h2>
+
+    <div class="share-options">
+      <div class="share-card">
+        <div class="share-icon">🌐</div>
+        <div class="share-title">Share the Website</div>
+        <div class="share-text">Link to allwheelsamherst.org in emails, Nextdoor, and Facebook groups. The Amherst Community group, Amherst Parents, and neighborhood groups are especially valuable.</div>
+      </div>
+      <div class="share-card">
+        <div class="share-icon">💬</div>
+        <div class="share-title">Talk to People</div>
+        <div class="share-text">The most persuasive thing is a personal conversation. Tell people why you care about this. Whether you're a skater, a parent, a teacher, or just someone who wants more for Amherst's kids — your story matters.</div>
+      </div>
+      <div class="share-card">
+        <div class="share-icon">📰</div>
+        <div class="share-title">Write a Letter</div>
+        <div class="share-text">Letters to the Amherst Bulletin and the Daily Hampshire Gazette help build public awareness. Letters to elected officials go on record. We can help you write one — just reach out.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="survey-section">
+  <div class="survey-text-block">
+    <h2 class="survey-headline">3 Minutes.<br>Real Impact.</h2>
+    <p class="survey-body">The most important thing you can do right now is complete the resident survey. It takes under 3 minutes, and every response demonstrates demand and community support to the town. Please do it, and send it to someone else.</p>
+  </div>
+  <a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="btn-dark">Take the Survey →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div class="footer-name">All-Wheels Amherst</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank">Survey</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 All-Wheels Amherst · Amherst, MA</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ & More Info | Amherst All-Wheels Skate Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #D4622A;
+    --orange-light: #E8845A;
+    --cream: #F5F0E8;
+    --black: #111111;
+    --dark: #1A1A1A;
+    --mid: #444;
+    --light-gray: #E8E4DC;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--black); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: var(--black); border-bottom: 2px solid var(--orange); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--white); line-height: 1; }
+  .nav-logo-text span { color: var(--orange); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links .nav-cta { background: var(--orange); color: var(--white); padding: 8px 18px; font-size: 0.65rem; }
+
+  .page-hero { background: var(--black); padding: 140px 60px 80px; position: relative; overflow: hidden; }
+  .page-hero::before { content: 'Q&A'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 30vw; color: rgba(212,98,42,0.04); right: -2vw; top: 50%; transform: translateY(-50%); line-height: 1; white-space: nowrap; }
+  .page-hero-inner { max-width: 800px; position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.95; color: var(--white); margin-bottom: 24px; }
+  .page-title em { color: var(--orange); font-style: normal; }
+  .page-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 540px; }
+
+  section { padding: 80px 60px; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--orange); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; letter-spacing: 0.02em; margin-bottom: 32px; }
+
+  /* WHAT IS A SKATEPARK */
+  #what { background: var(--cream); }
+  .what-inner { max-width: 1100px; margin: 0 auto; }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+  .what-body { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 20px; }
+  .what-body strong { color: var(--black); }
+
+  .vs-table { border: 1px solid var(--light-gray); overflow: hidden; }
+  .vs-header { display: grid; grid-template-columns: 1fr 1fr; }
+  .vs-col-head { padding: 16px 24px; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .vs-col-head.good { background: var(--black); color: var(--orange); }
+  .vs-col-head.bad { background: var(--light-gray); color: var(--mid); }
+  .vs-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--light-gray); }
+  .vs-cell { padding: 12px 24px; font-size: 0.85rem; }
+  .vs-cell.good { background: var(--white); font-weight: 500; color: var(--black); }
+  .vs-cell.bad { background: var(--light-gray); color: var(--mid); text-decoration: line-through; }
+
+  /* FAQ */
+  #faq { background: var(--black); color: var(--white); }
+  .faq-inner { max-width: 1100px; margin: 0 auto; }
+  .faq-inner .section-title { color: var(--white); }
+
+  .faq-categories { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .faq-cat-btn { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); padding: 8px 16px; background: none; cursor: pointer; transition: all 0.2s; }
+  .faq-cat-btn.active, .faq-cat-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+
+  .faq-item { background: rgba(255,255,255,0.04); overflow: hidden; }
+  .faq-item.open { background: rgba(255,255,255,0.07); }
+
+  .faq-question {
+    padding: 28px 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    transition: background 0.2s;
+  }
+  .faq-question:hover { background: rgba(255,255,255,0.06); }
+
+  .faq-q-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; }
+  .faq-cat-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); border: 1px solid rgba(212,98,42,0.4); padding: 3px 10px; white-space: nowrap; flex-shrink: 0; }
+  .faq-toggle { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+  .faq-toggle svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.4); transition: stroke 0.2s; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-item.open .faq-toggle svg { stroke: var(--orange); }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .faq-answer-inner { padding: 0 36px 28px; }
+  .faq-answer-text { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.6); }
+  .faq-answer-text strong { color: var(--orange); }
+  .faq-answer-source { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-top: 12px; }
+
+  /* DECIBEL */
+  #noise-visual { background: var(--cream); }
+  .noise-inner { max-width: 1100px; margin: 0 auto; }
+  .decibel-list { display: flex; flex-direction: column; gap: 4px; margin-top: 48px; }
+  .db-row { display: grid; grid-template-columns: 60px 160px 1fr; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--light-gray); }
+  .db-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--mid); line-height: 1; }
+  .db-label { font-size: 0.9rem; color: var(--mid); }
+  .db-bar { height: 8px; background: var(--light-gray); position: relative; border-radius: 2px; overflow: hidden; }
+  .db-fill { height: 100%; background: var(--light-gray); border-radius: 2px; }
+  .db-row.highlight .db-num { color: var(--orange); }
+  .db-row.highlight .db-label { color: var(--black); font-weight: 600; }
+  .db-row.highlight .db-fill { background: var(--orange); }
+  .db-row.danger .db-fill { background: var(--black); }
+
+  /* CTA STRIP */
+  .cta-strip { background: var(--orange); padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .cta-strip-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--white); line-height: 1.1; }
+  .btn-white { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--white); color: var(--orange); padding: 16px 32px; text-decoration: none; display: inline-block; transition: all 0.2s; white-space: nowrap; }
+  .btn-white:hover { background: var(--black); color: var(--white); }
+
+  footer { background: var(--black); padding: 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 2px solid var(--orange); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand svg { width: 32px; height: 32px; }
+  .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white); }
+  .footer-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 30px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .page-hero { padding: 120px 30px 60px; }
+    .what-grid { grid-template-columns: 1fr; gap: 40px; }
+    .db-row { grid-template-columns: 50px 120px 1fr; }
+    .cta-strip { padding: 60px 30px; flex-direction: column; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#need">The Need</a></li>
+    <li><a href="index.html#proposal">Proposal</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html" style="color:#D4622A">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Questions & Answers</div>
+    <h1 class="page-title">More <em>Info.</em><br>Real Answers.</h1>
+    <p class="page-subtitle">We've heard the questions — about noise, safety, crime, cost, and more. Here's what the research actually says, and what we believe about building this right.</p>
+  </div>
+</div>
+
+<!-- WHAT IS A SKATEPARK -->
+<section id="what">
+  <div class="what-inner">
+    <div class="section-label">Fundamentals</div>
+    <h2 class="section-title">What Is a Skatepark,<br>Actually?</h2>
+    <div class="what-grid">
+      <div>
+        <p class="what-body">A skatepark is a <strong>specially designed, purpose-built space</strong> for action sports: skateboarding, BMX riding, wheelchair motocross, roller skating, inline skating, and scootering.</p>
+        <p class="what-body">When built and planned correctly, a skatepark is a <strong>public asset</strong> — not a liability. The difference between a skatepark that works and one that doesn't comes entirely down to location, design, and community integration.</p>
+        <p class="what-body">We're proposing a <strong>permanent, professionally-built concrete</strong> facility — not temporary wood or prefabricated metal. Contemporary professional concrete skateparks last 20+ years with minimal maintenance.</p>
+      </div>
+      <div>
+        <div class="vs-table">
+          <div class="vs-header">
+            <div class="vs-col-head good">Skateparks Are:</div>
+            <div class="vs-col-head bad">Not:</div>
+          </div>
+          <div class="vs-row"><div class="vs-cell good">Public</div><div class="vs-cell bad">Restricted</div></div>
+          <div class="vs-row"><div class="vs-cell good">Concrete</div><div class="vs-cell bad">Prefabricated</div></div>
+          <div class="vs-row"><div class="vs-cell good">Permanent</div><div class="vs-cell bad">Temporary</div></div>
+          <div class="vs-row"><div class="vs-cell good">Quiet</div><div class="vs-cell bad">Loud</div></div>
+          <div class="vs-row"><div class="vs-cell good">Inclusive</div><div class="vs-cell bad">Exclusionary</div></div>
+          <div class="vs-row"><div class="vs-cell good">Self-governing</div><div class="vs-cell bad">Lawless</div></div>
+          <div class="vs-row"><div class="vs-cell good">Safe Space</div><div class="vs-cell bad">Dangerous</div></div>
+          <div class="vs-row"><div class="vs-cell good">An Asset</div><div class="vs-cell bad">A Liability</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="section-label">Deep Dive</div>
+    <h2 class="section-title">Frequently Asked<br>Questions</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Noise</span>
+          <span class="faq-q-text">Won't a skatepark be really loud and disruptive to neighbors?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Skatepark noise, according to <strong>every study conducted on the subject</strong>, consistently falls well below ordinary recreational standards. A comprehensive Portland, Oregon study found skateboarding noise was negligible at 50 feet, with peak sounds reaching only 65–71 decibels — about the same as a bat hitting a baseball, and quieter than a normal street conversation.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">Overall, a skatepark is about as "noisy" as a playground. Our proposed location within the Community Field recreation zone will further minimize any impact to neighboring properties.</p>
+            <p class="faq-answer-source">Source: Portland, Oregon Municipal Noise Study; Portland Sheriff's Department Chief Noise Officer, 2001</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Crime & Safety</span>
+          <span class="faq-q-text">Will it attract crime and bad behavior to the neighborhood?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">The opposite tends to be true. The Skatepark Project interviewed <strong>102 law enforcement officers from 37 states</strong>. Their findings: 91% reported no major issues of behavior or crime at their local skatepark. 85% reported a significant decrease in skating-related complaints around town after a park opened.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">A well-used, visible, active park becomes self-policing — the mix of families, spectators, and users of all ages creates natural social accountability. Visible location is key, which is why we're advocating for a Community Field site.</p>
+            <p class="faq-answer-source">Source: The Skatepark Project Law Enforcement Survey (n=102 officers, 37 states)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Safety</span>
+          <span class="faq-q-text">Is skateboarding actually a dangerous sport?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">According to the <strong>U.S. Consumer Products Safety Commission, skateboarding is statistically safer than basketball and football</strong> — activities Amherst already provides dedicated facilities for. Basketball has 10x more injuries per 1,000 participants than skateboarding (224 vs. 20).</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">Critically: the vast majority of severe skateboarding accidents involve a motor vehicle. A dedicated skatepark gives riders a safe surface away from traffic — it actively reduces risk. One-third of skate injuries happen in the first week, which is addressed through beginner programming and safety gear education.</p>
+            <p class="faq-answer-source">Source: U.S. Consumer Products Safety Commission; American Academy of Orthopedic Surgeons</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Liability</span>
+          <span class="faq-q-text">Won't this expose the town to significant liability?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Municipal insurers generally <strong>categorize skateparks similarly to basketball courts, playgrounds, and athletic fields</strong>. They don't invite liability suits any more than those existing facilities. Nearby towns — including Northampton, Belchertown, Greenfield, West Springfield, and Westfield — all operate public skateparks without reporting unusual increases in liability premiums.</p>
+            <p class="faq-answer-source">Source: Municipal insurance industry practice; regional town reports</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Cost</span>
+          <span class="faq-q-text">How much will the full skatepark cost, and how will it be funded?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Professional concrete skatepark construction typically runs <strong>$50–75 per square foot</strong>. A 10,000 sq. ft. park — appropriate for Amherst's size — is estimated at $500,000–$750,000 total. That sounds significant, but compare it to the cost of a standard public swimming pool or athletic field renovation.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">Phase 1 (site study and design) is $20,000–$40,000, funded through CPA. For full construction, we'll pursue: <strong>PARC grants</strong> (state recreational funding), <strong>private and community sponsorships</strong>, town capital budget, and further CPA funding.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Maintenance</span>
+          <span class="faq-q-text">What does ongoing maintenance look like?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Contemporary professional concrete skateparks have a lifespan of <strong>20+ years with minimal maintenance</strong> — they require no staff, no seasonal setup or breakdown, no nets or equipment, and no resurfacing for many years. Routine maintenance is comparable to a paved parking lot: periodic inspection, occasional crack repair, and litter collection.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">This is significantly lower than a sports field (mowing, irrigation, seasonal aeration) or pool (staffing, chemicals, heating).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Traffic</span>
+          <span class="faq-q-text">Will it create parking and traffic problems?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Experience in other towns consistently shows that skateparks do not create significant traffic issues. The vast majority of users — especially the students and youth who are the core demographic — will arrive <strong>on foot, by bike, by scooter, or from the nearby high school</strong>. This is inherently a self-propelled-transportation facility.</p>
+            <p class="faq-answer-source">Source: AWA research; comparable facility reports from Northampton, Greenfield, Easthampton</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Location</span>
+          <span class="faq-q-text">Where will the skatepark be located?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">The site hasn't been selected yet — that's exactly what Phase 1 funding will determine. We'll study two candidate sites rigorously, evaluate utilities, environmental conditions, geotechnical stability, permitting requirements, and community access, and hold a <strong>public meeting</strong> to gather community input before any final decision is made.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">We expect the site will be within or adjacent to the Community Field recreation complex, which already hosts the War Memorial Pool, playground, and sports fields.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-cat-tag">Equity</span>
+          <span class="faq-q-text">Who benefits from this — isn't it mainly for a specific group?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke-width="2"/><line x1="2" y1="8" x2="14" y2="8" stroke-width="2"/></svg></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p class="faq-answer-text">Skateboarding is the <strong>third least expensive sport</strong> out of 21 popular youth activities — behind only track and field and flag football. The biggest predictor of youth sports participation is family income, with children from lower-income homes participating significantly less. A free, unstructured, no-equipment-required public facility directly addresses this equity gap.</p>
+            <p class="faq-answer-text" style="margin-top: 12px;">Additionally, the park is designed for ALL wheeled activities: skateboarding, BMX, scooters, inline skating, wheelchair use. It's a facility where mobility devices are participants, not obstacles.</p>
+            <p class="faq-answer-source">Source: Aspen Institute / Utah State University 2019 National Youth Sports Survey; Aspen Institute income data</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NOISE VISUAL -->
+<section id="noise-visual">
+  <div class="noise-inner">
+    <div class="section-label">Context</div>
+    <h2 class="section-title">Skatepark Noise<br>in Perspective</h2>
+
+    <div class="decibel-list">
+      <div class="db-row">
+        <div class="db-num">10</div>
+        <div class="db-label">Threshold of hearing</div>
+        <div class="db-bar"><div class="db-fill" style="width:7.7%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">40</div>
+        <div class="db-label">Household noise</div>
+        <div class="db-bar"><div class="db-fill" style="width:30.8%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">50</div>
+        <div class="db-label">Office noise</div>
+        <div class="db-bar"><div class="db-fill" style="width:38.5%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">60</div>
+        <div class="db-label">Conversational speech</div>
+        <div class="db-bar"><div class="db-fill" style="width:46.2%"></div></div>
+      </div>
+      <div class="db-row highlight">
+        <div class="db-num">65</div>
+        <div class="db-label">🛹 Skatepark (average)</div>
+        <div class="db-bar"><div class="db-fill" style="width:50%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">70</div>
+        <div class="db-label">Normal street / passing cars</div>
+        <div class="db-bar"><div class="db-fill" style="width:53.8%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">85</div>
+        <div class="db-label">Noisy restaurant</div>
+        <div class="db-bar"><div class="db-fill" style="width:65.4%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">100</div>
+        <div class="db-label">Passing truck</div>
+        <div class="db-bar"><div class="db-fill" style="width:76.9%"></div></div>
+      </div>
+      <div class="db-row">
+        <div class="db-num">105</div>
+        <div class="db-label">Snow blower</div>
+        <div class="db-bar"><div class="db-fill" style="width:80.8%"></div></div>
+      </div>
+      <div class="db-row danger">
+        <div class="db-num">115</div>
+        <div class="db-label">Football game</div>
+        <div class="db-bar"><div class="db-fill" style="width:88.5%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="cta-strip-text">Still have questions?<br>We'd love to talk.</div>
+  <a href="mailto:allwheelsamherst@gmail.com" class="btn-white">Email Us →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div class="footer-name">All-Wheels Amherst</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank">Survey</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 All-Wheels Amherst · Amherst, MA</div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  // Open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Amherst All-Wheels Skate Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #D4622A;
+    --orange-light: #E8845A;
+    --cream: #F5F0E8;
+    --black: #111111;
+    --dark: #1A1A1A;
+    --mid: #444;
+    --light-gray: #E8E4DC;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--black); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; background: var(--black); border-bottom: 2px solid var(--orange); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--white); line-height: 1; }
+  .nav-logo-text span { color: var(--orange); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links .nav-cta { background: var(--orange); color: var(--white); padding: 8px 18px; font-size: 0.65rem; }
+
+  .page-hero { background: var(--black); padding: 140px 60px 80px; position: relative; overflow: hidden; }
+  .page-hero::before { content: 'AWA'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 40vw; color: rgba(212,98,42,0.04); right: -4vw; top: 50%; transform: translateY(-50%); line-height: 1; white-space: nowrap; }
+  .page-hero-inner { max-width: 800px; position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.95; color: var(--white); margin-bottom: 24px; }
+  .page-title em { color: var(--orange); font-style: normal; }
+  .page-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 540px; }
+
+  section { padding: 80px 60px; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--orange); }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; letter-spacing: 0.02em; margin-bottom: 32px; }
+
+  /* MISSION */
+  #mission { background: var(--cream); }
+  .mission-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .mission-body { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 20px; }
+  .mission-body strong { color: var(--black); }
+  .mission-values { display: flex; flex-direction: column; gap: 2px; }
+  .value-row { background: var(--black); padding: 24px 28px; display: flex; align-items: flex-start; gap: 20px; }
+  .value-row:nth-child(2) { background: var(--orange); }
+  .value-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: rgba(255,255,255,0.2); line-height: 1; min-width: 40px; }
+  .value-text {}
+  .value-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--white); letter-spacing: 0.05em; margin-bottom: 4px; }
+  .value-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+
+  /* TEAM */
+  #team { background: var(--black); color: var(--white); }
+  .team-inner { max-width: 1100px; margin: 0 auto; }
+  .team-inner .section-title { color: var(--white); }
+  .team-intro { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.55); max-width: 620px; margin-bottom: 60px; }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .team-card { background: rgba(255,255,255,0.04); padding: 40px 32px; border-top: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
+  .team-card:hover { border-top-color: var(--orange); background: rgba(255,255,255,0.07); }
+  .team-initial { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--orange); line-height: 1; margin-bottom: 16px; }
+  .team-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.04em; color: var(--white); margin-bottom: 4px; }
+  .team-role { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .team-bio { font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
+
+  /* CONTACT */
+  #contact { background: var(--cream); }
+  .contact-inner { max-width: 1100px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+  .contact-text { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 24px; }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-link-item { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--white); border-left: 3px solid var(--light-gray); transition: border-color 0.2s; text-decoration: none; color: var(--black); }
+  .contact-link-item:hover { border-left-color: var(--orange); }
+  .contact-link-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 2px; }
+  .contact-link-val { font-size: 0.95rem; color: var(--black); font-weight: 500; }
+  .contact-right { }
+  .mission-quote { background: var(--black); padding: 52px 48px; }
+  .mission-quote-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; line-height: 1.2; color: var(--white); letter-spacing: 0.02em; margin-bottom: 20px; }
+  .mission-quote-text em { color: var(--orange); font-style: normal; }
+  .mission-quote-source { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+
+  footer { background: var(--black); padding: 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 2px solid var(--orange); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand svg { width: 32px; height: 32px; }
+  .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--white); }
+  .footer-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 30px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .page-hero { padding: 120px 30px 60px; }
+    .mission-inner { grid-template-columns: 1fr; gap: 48px; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#need">The Need</a></li>
+    <li><a href="index.html#proposal">Proposal</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html" style="color:#D4622A">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Who We Are</div>
+    <h1 class="page-title">Community<br>For the <em>Community.</em></h1>
+    <p class="page-subtitle">We're Amherst residents, parents, skaters, and community members who believe our town deserves a safe, inclusive place to roll. No budget. No staff. Just people who care.</p>
+  </div>
+</div>
+
+<section id="mission">
+  <div class="mission-inner">
+    <div>
+      <div class="section-label">Our Mission</div>
+      <h2 class="section-title">Built By &amp;<br>For Amherst</h2>
+      <p class="mission-body">All-Wheels Amherst is a volunteer-led community advocacy group working to bring an inclusive, all-ages skatepark to Amherst, Massachusetts.</p>
+      <p class="mission-body">We envision a space where people of <strong>all ages and abilities</strong> can skateboard, scooter, bike, roll in wheelchairs, and more — a safe, sustainable, community-driven facility that complements existing town recreation and becomes a local hub for active play, socializing, and healthy movement.</p>
+      <p class="mission-body">This project proceeds in phases. Right now we're focused on Phase 1: making the case, securing CPA funding for a site study, and ensuring the eventual build reflects our community's values.</p>
+    </div>
+    <div class="mission-values">
+      <div class="value-row">
+        <div class="value-num">01</div>
+        <div class="value-text">
+          <div class="value-title">Inclusive by Design</div>
+          <div class="value-desc">Skateboarding, BMX, wheelchair, scooter, roller skates — everyone who rolls is welcome. ADA-compliant from day one.</div>
+        </div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">02</div>
+        <div class="value-text">
+          <div class="value-title">Community Driven</div>
+          <div class="value-desc">No outside agenda. We're Amherst residents working for Amherst residents. Every decision incorporates community input.</div>
+        </div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">03</div>
+        <div class="value-text">
+          <div class="value-title">Free &amp; Open</div>
+          <div class="value-desc">The park will be free to use — a public recreational asset with no membership, no teams, no registration required.</div>
+        </div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">04</div>
+        <div class="value-text">
+          <div class="value-title">Permanent &amp; Professional</div>
+          <div class="value-desc">We're building for the long term: professionally designed concrete with a 20+ year lifespan and minimal maintenance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="team-inner">
+    <div class="section-label">The People</div>
+    <h2 class="section-title">Who We Are</h2>
+    <p class="team-intro">All-Wheels Amherst started as a small group of residents who kept bumping into each other at skateparks in other towns, then asking: why doesn't Amherst have this? We're volunteers — parents, skaters, educators, and neighbors. If you want to join us, please reach out.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-initial">AW</div>
+        <div class="team-name">All-Wheels Amherst</div>
+        <div class="team-role">Community Organizers</div>
+        <div class="team-bio">A volunteer group of Amherst residents, parents, skaters, and community members united by a simple belief: Amherst kids deserve a skatepark.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">IH</div>
+        <div class="team-name">Ingo Helmich</div>
+        <div class="team-role">Exercise &amp; Sport Studies, Smith College · AWA Member</div>
+        <div class="team-bio">Brought the research perspective: the data on skateboarding's benefits for youth health, resilience, and social development that grounds our case in evidence.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">+</div>
+        <div class="team-name">Join Us</div>
+        <div class="team-role">We're looking for help</div>
+        <div class="team-bio">We need people who can help with organizing, social media, outreach, grant writing, event planning, and showing up. No experience required — just enthusiasm.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+
+    <div class="contact-grid">
+      <div>
+        <p class="contact-text">We're a volunteer group, so we don't have staff hours — but we read everything and respond to everyone. Whether you have a question, want to get involved, have concerns, or just want to show support, we'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:allwheelsamherst@gmail.com" class="contact-link-item">
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-val">allwheelsamherst@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="contact-link-item">
+            <div>
+              <div class="contact-link-label">Survey</div>
+              <div class="contact-link-val">Complete the Resident Survey →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="mission-quote">
+          <div class="mission-quote-text">Our mission is to create a <em>safe, sustainable, and community-driven</em> skatepark that becomes a local hub for active play, socializing, and healthy movement.</div>
+          <div class="mission-quote-source">All-Wheels Amherst Mission Statement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div class="footer-name">All-Wheels Amherst</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank">Survey</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 All-Wheels Amherst · Amherst, MA</div>
+</footer>
+</body>
+</html>

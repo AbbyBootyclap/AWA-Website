@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amherst All-Wheels Skate Park | AWA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #D4622A;
+    --orange-light: #E8845A;
+    --cream: #F5F0E8;
+    --black: #111111;
+    --dark: #1A1A1A;
+    --mid: #444;
+    --light-gray: #E8E4DC;
+    --white: #FFFFFF;
+    --yellow-accent: #F0C84A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    background: var(--black);
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .nav-logo-text span {
+    color: var(--orange);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-links .nav-cta {
+    background: var(--orange);
+    color: var(--white);
+    padding: 8px 18px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    transition: background 0.2s;
+  }
+
+  .nav-links .nav-cta:hover { background: var(--orange-light); color: var(--white); }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(212,98,42,0.15) 0%, transparent 70%),
+      var(--black);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(212,98,42,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,98,42,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 60px 80px;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    color: var(--orange);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--orange);
+    color: var(--white);
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--orange-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: right;
+  }
+
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--orange);
+  }
+
+  .hero-stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  /* ===== TICKER ===== */
+  .ticker {
+    background: var(--orange);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    padding: 0 40px;
+  }
+
+  .ticker-item::before {
+    content: '●';
+    margin-right: 40px;
+    opacity: 0.5;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+  }
+
+  /* ===== NEED SECTION ===== */
+  #need {
+    background: var(--cream);
+  }
+
+  .need-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .need-left {}
+
+  .need-body {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--mid);
+    margin-bottom: 24px;
+  }
+
+  .need-body strong {
+    color: var(--black);
+  }
+
+  .need-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stat-card {
+    background: var(--black);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .stat-source {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ===== DEMAND TABLE ===== */
+  #demand {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .demand-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .demand-intro .section-title { color: var(--white); }
+
+  .demand-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  .demand-bars {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .demand-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 100px;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .demand-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-align: right;
+  }
+
+  .demand-row.highlight .demand-label {
+    color: var(--orange);
+  }
+
+  .demand-bar-wrap {
+    height: 32px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .demand-bar-fill {
+    height: 100%;
+    background: rgba(255,255,255,0.12);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0;
+  }
+
+  .demand-row.highlight .demand-bar-fill {
+    background: var(--orange);
+  }
+
+  .demand-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  .demand-row.highlight .demand-val {
+    color: var(--orange);
+    font-size: 1.4rem;
+  }
+
+  .demand-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+    margin-top: 32px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== BENEFITS ===== */
+  #benefits {
+    background: var(--cream);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    max-width: 1200px;
+  }
+
+  .benefit-card {
+    background: var(--white);
+    padding: 48px 36px;
+    position: relative;
+  }
+
+  .benefit-card:nth-child(1) { background: var(--black); color: var(--white); }
+  .benefit-card:nth-child(4) { background: var(--orange); color: var(--white); }
+
+  .benefit-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    opacity: 0.08;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .benefit-icon {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .benefit-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .benefit-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  /* ===== COMMUNITY VOICE ===== */
+  #community {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .community-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .community-inner .section-title { color: var(--white); }
+
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .quote-card {
+    background: rgba(255,255,255,0.04);
+    padding: 48px 40px;
+    position: relative;
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .quote-card:hover {
+    border-left-color: var(--orange);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .quote-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--orange);
+    opacity: 0.3;
+    line-height: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .quote-text {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .quote-author {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .quote-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-top: 4px;
+  }
+
+  .survey-highlight {
+    background: var(--orange);
+    padding: 60px;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .survey-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .survey-big-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  .survey-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--white);
+    font-weight: 300;
+  }
+
+  .survey-text strong {
+    font-weight: 700;
+  }
+
+  /* ===== CONCERNS ===== */
+  #concerns {
+    background: var(--cream);
+  }
+
+  .concerns-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .concerns-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .concern-item {
+    border-top: 2px solid var(--light-gray);
+    padding-top: 28px;
+  }
+
+  .concern-item:hover { border-top-color: var(--orange); }
+
+  .concern-q {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .concern-q .tag {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  .concern-a {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  /* ===== PROPOSAL ===== */
+  #proposal {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .proposal-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .proposal-inner .section-title { color: var(--white); }
+
+  .proposal-desc {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.55);
+    max-width: 660px;
+    margin-bottom: 60px;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .option-card {
+    background: rgba(255,255,255,0.04);
+    padding: 52px 48px;
+    position: relative;
+  }
+
+  .option-card.featured {
+    background: var(--orange);
+  }
+
+  .option-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+    display: inline-block;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .option-card.featured .option-badge {
+    border-color: rgba(255,255,255,0.5);
+    color: var(--white);
+  }
+
+  .option-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .option-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+  }
+
+  .option-card.featured .option-subtitle { color: rgba(255,255,255,0.7); }
+
+  .option-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option-list li {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .option-card.featured .option-list li { color: rgba(255,255,255,0.85); }
+
+  .option-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-size: 0.8rem;
+  }
+
+  .option-card.featured .option-list li::before { color: rgba(255,255,255,0.6); }
+
+  .total-cost {
+    background: rgba(212,98,42,0.1);
+    border: 1px solid rgba(212,98,42,0.3);
+    padding: 40px 48px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .total-cost-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+
+  .total-cost-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .total-cost-text {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 440px;
+    line-height: 1.65;
+  }
+
+  /* ===== SURVEY CTA ===== */
+  #survey-cta {
+    background: var(--orange);
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .survey-cta-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 600px;
+  }
+
+  .survey-cta-text span { opacity: 0.6; }
+
+  .btn-white {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--white);
+    color: var(--orange);
+    padding: 18px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-white:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: 2px solid var(--orange);
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand svg { width: 32px; height: 32px; }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--orange); }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+  }
+
+  /* ===== MOBILE NAV ===== */
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .nav-mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+  .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    section { padding: 70px 30px; }
+    nav { padding: 0 24px; }
+
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: flex; }
+
+    .hero-content { padding: 40px 30px 60px; }
+    .hero-headline { font-size: clamp(4rem, 15vw, 7rem); }
+    .hero-stats { display: none; }
+
+    .need-grid { grid-template-columns: 1fr; gap: 48px; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .quotes-grid { grid-template-columns: 1fr; }
+    .survey-highlight { grid-template-columns: 1fr; gap: 24px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .concerns-grid { grid-template-columns: 1fr; }
+    .demand-row { grid-template-columns: 100px 1fr 80px; }
+    .demand-label { font-size: 0.55rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+    #survey-cta { padding: 60px 30px; }
+    .total-cost { flex-direction: column; }
+  }
+
+  @media (max-width: 600px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <!-- AWA Logo SVG -->
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div>
+      <div class="nav-logo-text">All-Wheels <span>Amherst</span></div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#need">The Need</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#proposal">Proposal</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
+  </ul>
+
+  <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'; document.querySelector('.nav-links').style.flexDirection = 'column'; document.querySelector('.nav-links').style.position = 'absolute'; document.querySelector('.nav-links').style.top = '64px'; document.querySelector('.nav-links').style.right = '0'; document.querySelector('.nav-links').style.background = '#111'; document.querySelector('.nav-links').style.padding = '24px 32px'; document.querySelector('.nav-links').style.gap = '20px';" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Amherst, Massachusetts</div>
+    <h1 class="hero-headline">Build the<br><em>Park.</em></h1>
+    <p class="hero-sub">Amherst has no skatepark. We're changing that. An inclusive, all-wheels facility for skateboarders, BMX riders, scooters, wheelchairs, and everyone who rolls — right here in our community.</p>
+    <div class="hero-actions">
+      <a href="#proposal" class="btn-primary">See the Proposal</a>
+      <a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="btn-ghost">Take Our Survey</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">1,071</div>
+      <div class="hero-stat-label">Estimated skaters<br>in Amherst</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">0</div>
+      <div class="hero-stat-label">Dedicated facilities<br>in Amherst</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">57.5%</div>
+      <div class="hero-stat-label">Surveyed residents<br>say very important</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Skate</span>
+    <span class="ticker-item">BMX</span>
+    <span class="ticker-item">Scooter</span>
+    <span class="ticker-item">Wheelchair</span>
+    <span class="ticker-item">Inline Skate</span>
+    <span class="ticker-item">All Ages</span>
+    <span class="ticker-item">All Abilities</span>
+    <span class="ticker-item">Free to Use</span>
+    <span class="ticker-item">Community Driven</span>
+    <span class="ticker-item">Amherst MA</span>
+    <span class="ticker-item">Skate</span>
+    <span class="ticker-item">BMX</span>
+    <span class="ticker-item">Scooter</span>
+    <span class="ticker-item">Wheelchair</span>
+    <span class="ticker-item">Inline Skate</span>
+    <span class="ticker-item">All Ages</span>
+    <span class="ticker-item">All Abilities</span>
+    <span class="ticker-item">Free to Use</span>
+    <span class="ticker-item">Community Driven</span>
+    <span class="ticker-item">Amherst MA</span>
+  </div>
+</div>
+
+<!-- THE NEED -->
+<section id="need">
+  <div class="need-grid">
+    <div class="need-left">
+      <div class="section-label fade-up">The Need</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Amherst Has<br>No Skatepark.</h2>
+      <p class="need-body fade-up fade-up-delay-2">There are currently <strong>no action sport recreation facilities</strong> in Amherst. Skateboarders do their best to be unseen — skating in parking lots, on stairways, and on streets where risk of injury is significantly higher.</p>
+      <p class="need-body fade-up fade-up-delay-2">Meanwhile, residents drive to Greenfield, Springfield, and Easthampton just to use facilities that other towns have invested in. <strong>Amherst's kids deserve those options at home.</strong></p>
+      <p class="need-body fade-up fade-up-delay-3">This isn't just about skateboarding. An All-Wheels Skate Park is an affordable, accessible, open-to-all recreational asset — like a basketball court or a playground — that serves our whole community.</p>
+    </div>
+    <div class="need-right">
+      <div class="stat-card fade-up fade-up-delay-1">
+        <div class="stat-number">9.28M</div>
+        <div class="stat-desc">Skateboarders in the US — 2.73% of the total population. Apply that to Amherst's 35,472 residents and you get an estimated 1,071 local skaters with nowhere to skate.</div>
+        <div class="stat-source">Statista Research Department, 2024</div>
+      </div>
+      <div class="stat-card fade-up fade-up-delay-2">
+        <div class="stat-number">24%</div>
+        <div class="stat-desc">Of high school girls report skateboarding as a top interest — making it the <strong style="color:var(--orange)">3rd most common</strong> interest for high schoolers, behind only swimming and running.</div>
+        <div class="stat-source">Aspen Institute National Student Survey, 2021</div>
+      </div>
+      <div class="stat-card fade-up fade-up-delay-3">
+        <div class="stat-number">3rd</div>
+        <div class="stat-desc">Least expensive sport out of 21 popular youth sports — making it one of the most accessible options for kids from lower-income families who are already less likely to participate in sports.</div>
+        <div class="stat-source">Aspen Institute / Utah State University, 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMAND -->
+<section id="demand">
+  <div class="demand-intro">
+    <div class="section-label">By The Numbers</div>
+    <h2 class="section-title">Unmet Demand<br>in Amherst</h2>
+    <p class="demand-sub">We compared participation rates for popular recreational activities against Amherst's existing facilities. Skateboarding and BMX have the <strong style="color:var(--orange)">highest unmet demand</strong> of any activity — with zero facilities for an estimated 1,597 residents who participate.</p>
+  </div>
+  <div class="demand-bars" id="demandBars">
+    <div class="demand-row" data-val="2286" data-max="2286">
+      <div class="demand-label">Pickleball</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">2,286</div>
+    </div>
+    <div class="demand-row highlight" data-val="1071" data-max="2286">
+      <div class="demand-label">Skateboarding ★</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">1,071</div>
+    </div>
+    <div class="demand-row highlight" data-val="526" data-max="2286">
+      <div class="demand-label">BMX ★</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">526</div>
+    </div>
+    <div class="demand-row" data-val="163" data-max="2286">
+      <div class="demand-label">Basketball</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">163</div>
+    </div>
+    <div class="demand-row" data-val="113" data-max="2286">
+      <div class="demand-label">Baseball</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">113</div>
+    </div>
+    <div class="demand-row" data-val="72" data-max="2286">
+      <div class="demand-label">Ice Hockey</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">72</div>
+    </div>
+    <div class="demand-row" data-val="58" data-max="2286">
+      <div class="demand-label">Tennis</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">58</div>
+    </div>
+    <div class="demand-row" data-val="35" data-max="2286">
+      <div class="demand-label">Soccer</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">35</div>
+    </div>
+    <div class="demand-row" data-val="14" data-max="2286">
+      <div class="demand-label">Football</div>
+      <div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div>
+      <div class="demand-val">14</div>
+    </div>
+  </div>
+  <p class="demand-note">★ Zero dedicated facilities currently exist in Amherst for these activities. Numbers represent estimated residents who would benefit from a new facility (using Amherst pop. 35,472). Source: Statista 2024 / satellite map count.</p>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="section-label fade-up">Why It Matters</div>
+  <h2 class="section-title fade-up fade-up-delay-1">What A Skatepark<br>Gives a Community</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card fade-up">
+      <div class="benefit-num">01</div>
+      <div class="benefit-icon">🛹</div>
+      <div class="benefit-title">Free & Accessible</div>
+      <div class="benefit-desc">Once built, the facility is free (or low cost) to use — open access to all with modest maintenance. No team required. No registration. No fees.</div>
+    </div>
+    <div class="benefit-card fade-up fade-up-delay-1">
+      <div class="benefit-num">02</div>
+      <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+      <div class="benefit-title">Multi-Generational</div>
+      <div class="benefit-desc">Unlike organized sports, action sports bring all ages together on the same surface. Mentor-mentee relationships form organically between experienced and beginning riders.</div>
+    </div>
+    <div class="benefit-card fade-up fade-up-delay-2">
+      <div class="benefit-num">03</div>
+      <div class="benefit-icon">♿</div>
+      <div class="benefit-title">Truly Inclusive</div>
+      <div class="benefit-desc">Designed for wheelchairs, scooters, bikes, skates, and more. ADA-compliant by design. The only recreation space where mobility devices are the point, not the barrier.</div>
+    </div>
+    <div class="benefit-card fade-up">
+      <div class="benefit-num">04</div>
+      <div class="benefit-icon">🏘️</div>
+      <div class="benefit-title">Safer Neighborhoods</div>
+      <div class="benefit-desc">Skateparks reduce unsanctioned skating on streets and stairs where injury risk is highest. 85% of law enforcement officers surveyed reported a significant decrease in skate-related complaints after a park opened.</div>
+    </div>
+    <div class="benefit-card fade-up fade-up-delay-1">
+      <div class="benefit-num">05</div>
+      <div class="benefit-icon">💪</div>
+      <div class="benefit-title">Builds Resilience</div>
+      <div class="benefit-desc">Research from USC shows skaters apply lessons of perseverance and resilience learned at the park to other areas of their lives. The sport teaches you to get back up.</div>
+    </div>
+    <div class="benefit-card fade-up fade-up-delay-2">
+      <div class="benefit-num">06</div>
+      <div class="benefit-icon">🌳</div>
+      <div class="benefit-title">Community Hub</div>
+      <div class="benefit-desc">A well-designed park integrates with Community Field, adding seating and gathering space for families and spectators. A well-used, active park polices itself.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY VOICE -->
+<section id="community">
+  <div class="community-inner">
+    <div class="section-label">Local Voices</div>
+    <h2 class="section-title">Amherst Residents<br>Want This</h2>
+
+    <div class="quotes-grid">
+      <div class="quote-card fade-up">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Amherst has always lacked proper spaces for teenage kids to convene. I grew up in this town and the only places we could go after school were the Boys & Girls Club or the library. Our kids deserve a positive space that is active and empowering.</p>
+        <div class="quote-author">Regina Ciccarelli Siqueira</div>
+        <div class="quote-role">Amherst Resident</div>
+      </div>
+      <div class="quote-card fade-up fade-up-delay-1">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">It's not just for high school students. It's for college students, young kids who've watched teenagers compete in the Olympics, my husband and friends who drive weekly to Easthampton to skate, and also moms like myself who've ganged up to learn how to skateboard.</p>
+        <div class="quote-author">Zoë Ozereko</div>
+        <div class="quote-role">Amherst Resident</div>
+      </div>
+      <div class="quote-card fade-up fade-up-delay-2">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">A skate park would address the needs of older kids and adults who would appreciate an inclusive place to gather, enjoy physical challenges and make in-person social connections. This would be a great investment consistent with the goals of creating a welcoming environment in town.</p>
+        <div class="quote-author">Dolly Pedevillano</div>
+        <div class="quote-role">Director, Spring Street Preschool</div>
+      </div>
+      <div class="quote-card fade-up fade-up-delay-3">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">I think a skate park would help foster a sense of belonging for our older children and serve as a safe and exciting community hub for them. I often see teenagers visit playgrounds wanting a place for themselves to gather and socialize.</p>
+        <div class="quote-author">Leila Tunnell</div>
+        <div class="quote-role">Amherst & Pelham School Garden Educator</div>
+      </div>
+    </div>
+
+    <div class="survey-highlight fade-up">
+      <div>
+        <div class="survey-big-num">85%</div>
+        <div class="survey-big-label">of survey respondents rated it 4 or 5 out of 5</div>
+      </div>
+      <div class="survey-text">In our early community survey, <strong>57.5% of respondents said a skatepark in Amherst is "very important"</strong> — and another 27.4% gave it a 4 out of 5. The demand is here. We just need the park.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERNS -->
+<section id="concerns">
+  <div class="concerns-inner">
+    <div class="section-label fade-up">Addressing Concerns</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Common Questions,<br>Answered Honestly</h2>
+
+    <div class="concerns-grid">
+      <div class="concern-item fade-up">
+        <div class="concern-q"><span class="tag">Noise</span> Will it be loud?</div>
+        <p class="concern-a">A skatepark averages ~65 decibels — roughly the same as conversational speech or a playground. According to a Portland, Oregon study, skateboarding noise "was negligible at 50 feet." It's quieter than a basketball game.</p>
+      </div>
+      <div class="concern-item fade-up fade-up-delay-1">
+        <div class="concern-q"><span class="tag">Crime</span> Will it attract trouble?</div>
+        <p class="concern-a">91% of law enforcement officers surveyed by The Skatepark Project reported no major issues of behavior or crime at their local skatepark. A well-used, visible park with mixed ages actually becomes a self-policing space.</p>
+      </div>
+      <div class="concern-item fade-up fade-up-delay-2">
+        <div class="concern-q"><span class="tag">Traffic</span> Will it impact parking?</div>
+        <p class="concern-a">Most users will arrive on foot, by bike, or from the nearby high school. Experience in other towns consistently shows that skateparks do not create significant traffic or parking issues.</p>
+      </div>
+      <div class="concern-item fade-up fade-up-delay-3">
+        <div class="concern-q"><span class="tag">Liability</span> What about insurance?</div>
+        <p class="concern-a">Municipal insurers categorize skateparks similarly to basketball courts, playgrounds, and athletic fields. Northampton, Belchertown, Greenfield, West Springfield, and Westfield all operate public skateparks without unusual liability premium increases.</p>
+      </div>
+      <div class="concern-item fade-up">
+        <div class="concern-q"><span class="tag">Safety</span> Is skateboarding dangerous?</div>
+        <p class="concern-a">According to the U.S. Consumer Products Safety Commission, skateboarding is statistically safer than basketball and football — activities Amherst already provides facilities for. Basketball has 10x more injuries per 1,000 participants.</p>
+      </div>
+      <div class="concern-item fade-up fade-up-delay-1">
+        <div class="concern-q"><span class="tag">Maintenance</span> What's the upkeep?</div>
+        <p class="concern-a">A professionally built concrete skatepark has a lifespan of 20+ years with minimal maintenance. It requires no staff, no lighting (unless chosen), no nets or equipment. It's one of the most cost-effective recreational investments a town can make.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL -->
+<section id="proposal">
+  <div class="proposal-inner">
+    <div class="section-label">Phase 1 Proposal</div>
+    <h2 class="section-title">The Plan</h2>
+    <p class="proposal-desc">We're asking for CPA funding to complete Phase 1: a rigorous site selection and design process that will set up this project for successful construction, grant applications, and community buy-in. Full construction of a 10,000 sq. ft. skatepark is estimated at $500,000–$750,000. We will pursue grants, sponsorships, and future CPA funding for that phase.</p>
+
+    <div class="options-grid">
+      <div class="option-card fade-up">
+        <div class="option-badge">Option 1 — Baseline</div>
+        <div class="option-price">$20K</div>
+        <div class="option-subtitle">Site selection study with due diligence for 2 candidate sites</div>
+        <ul class="option-list">
+          <li>Utility, environmental & stormwater review</li>
+          <li>Natural resource mapping</li>
+          <li>Regulations / permitting / land use review</li>
+          <li>Geotechnical review with subsurface exploration</li>
+          <li>Diagrammatic conceptual design for each site</li>
+          <li>Public meeting to gather community input</li>
+        </ul>
+      </div>
+      <div class="option-card featured fade-up fade-up-delay-1">
+        <div class="option-badge">Option 2 — Recommended</div>
+        <div class="option-price">$40K</div>
+        <div class="option-subtitle">Everything in Option 1, plus full design deliverables</div>
+        <ul class="option-list">
+          <li>All items from Option 1</li>
+          <li>Licensed land survey of preferred site</li>
+          <li>Full schematic design for both candidate sites</li>
+          <li>3D renderings for community engagement & grant applications</li>
+          <li>Design package strengthens PARC grant eligibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="total-cost fade-up">
+      <div>
+        <div class="total-cost-label">Full Project Estimate</div>
+        <div class="total-cost-num">$500K – $750K</div>
+      </div>
+      <div class="total-cost-text">Full professional skatepark construction runs $50–75 per sq. ft. A 10,000 sq. ft. park suits Amherst's needs. We will seek PARC grants, private and community sponsorships, town support, and further CPA funding to complete remaining phases — but it all starts with Phase 1.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SURVEY CTA -->
+<div id="survey-cta">
+  <div class="survey-cta-text">Your Voice<br><span>Shapes This Park.</span></div>
+  <a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="btn-white">Take the Resident Survey →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="40" y2="50" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="70" y2="10" stroke="#D4622A" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="22" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+      <circle cx="58" cy="65" r="7" stroke="#D4622A" stroke-width="4"/>
+    </svg>
+    <div class="footer-name">All-Wheels Amherst</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank">Survey</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 All-Wheels Amherst · Amherst, MA</div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Bar chart animation
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.demand-row').forEach(row => {
+        const val = parseInt(row.dataset.val);
+        const max = parseInt(row.dataset.max);
+        const pct = (val / max * 100).toFixed(1);
+        row.querySelector('.demand-bar-fill').style.width = pct + '%';
+      });
+      barObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+
+const barsEl = document.getElementById('demandBars');
+if (barsEl) barObserver.observe(barsEl);
+</script>
+</body>
+</html>
