@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News | Amherst All-Wheels Skate Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barrio&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --orange:#D4622A; --orange-light:#E8845A; --cream:#F5F0E8; --black:#111111; --dark:#1A1A1A; --mid:#444; --light-gray:#E8E4DC; --white:#FFFFFF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--black); overflow-x:hidden; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 40px; height:64px; background:var(--black); border-bottom:2px solid var(--orange); }
+  .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .nav-logo svg { width:36px; height:36px; }
+  .nav-logo-text { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.08em; color:var(--white); line-height:1; }
+  .nav-logo-text span { color:var(--orange); }
+  .nav-links { display:flex; align-items:center; gap:24px; list-style:none; }
+  .nav-links a { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); text-decoration:none; transition:color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color:var(--orange); }
+  .nav-links .nav-cta { background:var(--orange); color:var(--white); padding:8px 16px; }
+  .nav-links .nav-cta:hover { background:var(--orange-light); color:var(--white); }
+
+  .page-hero { background:var(--black); padding:140px 60px 80px; position:relative; overflow:hidden; }
+  .page-hero::before { content:'NEWS'; position:absolute; font-family:'Bebas Neue',sans-serif; font-size:40vw; color:rgba(212,98,42,0.04); right:-4vw; top:50%; transform:translateY(-50%); line-height:1; white-space:nowrap; }
+  .page-hero-inner { max-width:800px; position:relative; z-index:1; }
+  .hero-eyebrow { font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+  .hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--orange); }
+  .page-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.5rem,8vw,6rem); line-height:0.95; color:var(--white); margin-bottom:24px; }
+  .page-title em { color:var(--orange); font-style:normal; }
+  .page-subtitle { font-size:1.1rem; color:rgba(255,255,255,0.55); line-height:1.7; font-weight:300; max-width:540px; }
+
+  /* NEWS SECTION */
+  #news-section { padding:80px 60px; }
+  .news-inner { max-width:1100px; margin:0 auto; }
+  .news-category-label { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:32px; display:flex; align-items:center; gap:12px; }
+  .news-category-label::before { content:''; display:block; width:30px; height:1px; background:var(--orange); }
+  
+  .news-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:60px; }
+  .news-card { background:var(--white); display:flex; flex-direction:column; transition:box-shadow 0.2s; }
+  .news-card:hover { box-shadow:0 4px 24px rgba(0,0,0,0.08); }
+  .news-card-img { height:240px; overflow:hidden; }
+  .news-card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; filter:saturate(0.85); }
+  .news-card:hover .news-card-img img { transform:scale(1.03); filter:saturate(1); }
+  .news-card-body { padding:32px 36px; flex:1; display:flex; flex-direction:column; }
+  .news-tag { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; background:var(--orange); color:var(--white); padding:4px 10px; display:inline-block; margin-bottom:16px; width:fit-content; }
+  .news-tag.friends { background:var(--black); }
+  .news-date { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:rgba(0,0,0,0.3); margin-bottom:12px; }
+  .news-title { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.03em; line-height:1.1; color:var(--black); margin-bottom:12px; }
+  .news-summary { font-size:0.9rem; line-height:1.75; color:var(--mid); margin-bottom:24px; flex:1; }
+  .news-source { font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(0,0,0,0.3); margin-bottom:20px; }
+  .news-link { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:gap 0.2s; margin-top:auto; }
+  .news-link:hover { gap:14px; }
+
+  /* FEATURED (full width) */
+  .news-featured { background:var(--white); display:grid; grid-template-columns:1fr 1fr; margin-bottom:2px; }
+  .news-featured-img { overflow:hidden; }
+  .news-featured-img img { width:100%; height:100%; object-fit:cover; min-height:380px; display:block; filter:saturate(0.85); transition:filter 0.3s; }
+  .news-featured:hover .news-featured-img img { filter:saturate(1); }
+  .news-featured-body { padding:52px 48px; display:flex; flex-direction:column; justify-content:center; }
+  
+  footer { background:var(--black); padding:60px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; border-top:2px solid var(--orange); }
+  .footer-brand { display:flex; align-items:center; gap:12px; }
+  .footer-name { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.08em; color:var(--white); }
+  .footer-links { display:flex; gap:32px; list-style:none; flex-wrap:wrap; }
+  .footer-links a { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--orange); }
+  .footer-copy { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; color:rgba(255,255,255,0.2); text-transform:uppercase; }
+
+  .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:4px; }
+  .nav-mobile-toggle span { display:block; width:24px; height:2px; background:var(--white); }
+
+  @media (max-width:900px) {
+    nav { padding:0 24px; }
+    .nav-links { display:none; }
+    .nav-mobile-toggle { display:flex; }
+    .page-hero { padding:120px 30px 60px; }
+    #news-section { padding:60px 30px; }
+    .news-grid { grid-template-columns:1fr; }
+    .news-featured { grid-template-columns:1fr; }
+    .news-featured-img img { min-height:260px; }
+    .news-featured-body { padding:40px 30px; }
+    footer { flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
+      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
+      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
+      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
+      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
+      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
+      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
+    </svg>
+    <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#need">The Need</a></li>
+    <li><a href="index.html#proposal">Proposal</a></li>
+    <li><a href="news.html" class="active">News</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
+  </ul>
+  <button class="nav-mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Press &amp; Updates</div>
+    <h1 class="page-title">AWA in the <em>News.</em></h1>
+    <p class="page-subtitle">Coverage of the campaign to bring an all-wheels skatepark to Amherst, and news from neighboring communities leading the way.</p>
+  </div>
+</div>
+
+<section id="news-section">
+  <div class="news-inner">
+
+    <!-- AMHERST AWA NEWS -->
+    <div class="news-category-label">Amherst All-Wheels</div>
+
+    <!-- Featured article -->
+    <div class="news-featured">
+      <div class="news-featured-img">
+        <img src="bart-jaillet-QmOoqQQzCvU-unsplash_2.png" alt="Aerial view of skatepark">
+      </div>
+      <div class="news-featured-body">
+        <div class="news-tag">Amherst Bulletin</div>
+        <div class="news-date">November 13, 2025</div>
+        <div class="news-title" style="font-size:2rem;margin-bottom:16px">Group Advocates for New Skatepark in Amherst</div>
+        <p class="news-summary">Amherst residents are proposing an all-wheels skatepark near Community Field, potentially adjacent to War Memorial Pool across from Amherst Regional High School. The All-Wheels Amherst group is seeking Community Preservation Act funding for Phase 1: a site study and design process that would make the project shovel-ready by 2027. The group points out that Amherst currently has no skate park, no BMX course, and no pump track, leaving action sports riders with nowhere to go in town.</p>
+        <div class="news-source">Source: Amherst Bulletin &mdash; Scott Merzbach</div>
+        <a href="https://amherstbulletin.com/2025/11/13/around-amherst-group-advocates-for-new-skatepark/" target="_blank" class="news-link">Read the Full Article &rarr;</a>
+      </div>
+    </div>
+
+    <!-- FRIENDS OF AWA -->
+    <div class="news-category-label" style="margin-top:60px">Friends of AWA &mdash; Neighboring Communities</div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--mid);line-height:1.7;max-width:700px;margin-bottom:36px">Skateparks are happening across western Massachusetts. These neighboring projects show what's possible and prove there's broad regional support for this kind of inclusive recreational infrastructure.</p>
+
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="vadim-babenko-igJIOyoNsBc-unsplash_2.png" alt="Large skatepark aerial view">
+        </div>
+        <div class="news-card-body">
+          <span class="news-tag friends">Friends of AWA</span>
+          <div class="news-date">February 9, 2026</div>
+          <div class="news-title">Plans for Skate &amp; Dog Parks Advancing in Easthampton</div>
+          <p class="news-summary">Easthampton is making significant progress on both a new skatepark and a dog park. The article covers the planning momentum in a neighboring Hampshire County community that has long been a destination for Amherst area skaters who have nowhere to ride at home.</p>
+          <div class="news-source">Source: Daily Hampshire Gazette</div>
+          <a href="https://gazettenet.com/2026/02/09/around-the-hamptons-plans-for-skate-dog-parks-advancing-in-easthampton/" target="_blank" class="news-link">Read the Full Article &rarr;</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img">
+          <img src="pexels-dayong-tien-681073045-18186109_2.png" alt="Skatepark with ramps">
+        </div>
+        <div class="news-card-body">
+          <span class="news-tag friends">Friends of AWA</span>
+          <div class="news-date">February 2026</div>
+          <div class="news-title">Easthampton Skatepark Project Enters Final $85,000 Fundraising Push</div>
+          <p class="news-summary">The Easthampton skatepark project has entered its final fundraising phase, needing $85,000 to complete construction. This neighboring project — which has served as a de facto Amherst skatepark for years — demonstrates exactly the kind of community-driven, publicly supported facility AWA is working toward in Amherst.</p>
+          <div class="news-source">Source: WWLP News &mdash; Hampshire County</div>
+          <a href="https://www.wwlp.com/news/local-news/hampshire-county/easthampton-skatepark-project-enters-final-85000-fundraising-push/" target="_blank" class="news-link">Read the Full Article &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px">
+      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
+      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
+      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
+      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
+      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
+      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
+      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
+    </svg>
+    <div class="footer-name">All-Wheels Amherst</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="how-to-help.html">How to Help</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank">Survey</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 All-Wheels Amherst &middot; Amherst, MA</div>
+</footer>
+
+<script>
+function toggleMobileNav(){ const links=document.querySelector('.nav-links'); const isOpen=links.style.display==='flex'; links.style.display=isOpen?'none':'flex'; links.style.flexDirection='column'; links.style.position='absolute'; links.style.top='64px'; links.style.right='0'; links.style.background='#111'; links.style.padding='24px 32px'; links.style.gap='20px'; }
+</script>
+</body>
+</html>
