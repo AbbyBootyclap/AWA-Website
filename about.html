@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us | Amherst All-Wheels Skate Park</title>
+<link rel="icon" type="image/svg+xml" href="images/All-Wheels_Amherst_Logo_v2_-_multi.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -111,21 +112,22 @@
   @media (max-width: 600px) {
     .team-grid { grid-template-columns: 1fr; }
   }
+
+  .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+  .nav-mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--white); }
+  @media (max-width: 900px) {
+    .nav-links { display: none !important; }
+    .nav-links.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 64px; right: 0; background: #111111; padding: 24px 32px; gap: 20px; z-index: 200; min-width: 220px; }
+    .nav-mobile-toggle { display: flex; }
+    nav { padding: 0 24px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
-      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
-      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
-      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
-      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
-    </svg>
+    <img src="images/All-Wheels_Amherst_Logo_v2_-_multi.svg" alt="AWA Logo" style="width:36px;height:36px">
     <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
   </a>
   <ul class="nav-links">
@@ -137,6 +139,10 @@
     <li><a href="faq.html">FAQ</a></li>
     <li><a href="https://forms.gle/oesC3GrCHFeDwoRd7" target="_blank" class="nav-cta">Take the Survey</a></li>
   </ul>
+
+  <button class="nav-mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-hero">
@@ -192,8 +198,8 @@
 <section id="team">
   <div class="team-inner">
     <div class="section-label">The People</div>
-    <h2 class="section-title">Who We Are</h2>
-    <p class="team-intro">All-Wheels Amherst started as a small group of residents who kept bumping into each other at skateparks in other towns, then asking: why doesn't Amherst have this? We're volunteers — parents, skaters, educators, and neighbors. If you want to join us, please reach out.</p>
+    <h2 class="section-title">The Steering Group</h2>
+    <p class="team-intro">All-Wheels Amherst is a large and growing coalition of Amherst and surrounding-area residents committed to making this happen. Leading the effort is a steering group of four community members who have been driving the campaign since its founding of residents who kept bumping into each other at skateparks in other towns, then asking: why doesn't Amherst have this? We're volunteers — parents, skaters, educators, and neighbors. If you want to join us, please reach out. — but the momentum behind AWA is much bigger than any four people.</p>
 
     <div class="team-grid">
       <div class="team-card">
@@ -265,15 +271,7 @@
 
 <footer>
   <div class="footer-brand">
-    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
-      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
-      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
-      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
-      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
-    </svg>
+    <img src="images/All-Wheels_Amherst_Logo_v2_-_multi.svg" alt="AWA" style="width:32px;height:32px">
     <div class="footer-name">All-Wheels Amherst</div>
   </div>
   <ul class="footer-links">

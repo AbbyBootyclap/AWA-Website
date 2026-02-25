@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amherst All-Wheels Skate Park | AWA</title>
+<link rel="icon" type="image/svg+xml" href="images/All-Wheels_Amherst_Logo_v2_-_multi.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barrio&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -30,12 +31,12 @@
 
   /* HERO */
   #hero { min-height: 100vh; background: var(--black); display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; padding-top: 64px; }
-  .hero-bg-photo { position: absolute; inset: 0; background: url('reed-geiger-JGQj_A-jMsE-unsplash_2.png') center 30% / cover no-repeat; opacity: 0.25; }
+  .hero-bg-photo { position: absolute; inset: 0; background: url('images/IMG_20250929_220900_1.png') center 30% / cover no-repeat; opacity: 0.25; }
   .hero-bg-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,17,17,0.97) 0%, rgba(17,17,17,0.45) 55%, rgba(17,17,17,0.7) 100%); }
   .hero-content { position: relative; z-index: 2; padding: 60px 60px 80px; max-width: 900px; }
   .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
   .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--orange); }
-  .hero-headline { font-family: 'Barrio', cursive; font-size: clamp(4rem, 11vw, 9rem); line-height: 0.92; color: var(--white); letter-spacing: 0.01em; margin-bottom: 32px; text-shadow: 3px 4px 0px rgba(212,98,42,0.4); }
+  .hero-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 11vw, 9rem); line-height: 0.92; color: var(--white); letter-spacing: 0.01em; margin-bottom: 32px; text-shadow: 3px 4px 0px rgba(212,98,42,0.4); }
   .hero-headline em { color: var(--orange); font-style: normal; }
   .hero-sub { font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.65); max-width: 520px; margin-bottom: 40px; font-weight: 300; }
   .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
@@ -191,6 +192,7 @@
   /* MOBILE NAV */
   .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
   .nav-mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--white); }
+  @media (max-width: 900px) { .nav-links { display: none !important; } .nav-links.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 64px; right: 0; background: #111111; padding: 24px 32px; gap: 20px; z-index: 200; min-width: 220px; } }
 
   /* ANIMATIONS */
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -203,7 +205,6 @@
   @media (max-width: 900px) {
     section { padding: 70px 30px; }
     nav { padding: 0 24px; }
-    .nav-links { display: none; }
     .nav-mobile-toggle { display: flex; }
     .hero-content { padding: 40px 30px 60px; }
     .hero-headline { font-size: clamp(3.5rem, 14vw, 6rem); }
@@ -242,15 +243,7 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
-      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
-      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
-      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
-      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
-    </svg>
+    <img src="images/All-Wheels_Amherst_Logo_v2_-_multi.svg" alt="AWA Logo" style="width:36px;height:36px">
     <div><div class="nav-logo-text">All-Wheels <span>Amherst</span></div></div>
   </a>
   <ul class="nav-links">
@@ -330,7 +323,7 @@
   <div class="demand-intro">
     <div class="section-label">By The Numbers</div>
     <h2 class="section-title">Unmet Demand<br>in Amherst</h2>
-    <p class="demand-sub">We compared participation rates for popular recreational activities against Amherst's existing facilities. Skateboarding and BMX rank among the <strong style="color:var(--orange)">highest unmet demand</strong> of any activity — second and third only to pickleball, which already has courts in town. Zero facilities exist for an estimated 1,597 skateboarding and BMX residents.</p>
+    <p class="demand-sub">We compared participation rates for popular recreational activities against Amherst's existing facilities. Skateboarding and BMX rank among the <strong style="color:var(--orange)">highest unmet demand</strong> of any activity — second and third only to pickleball — and all three activities currently lack dedicated facilities. Zero permanent facilities exist for an estimated 1,597 skateboarding and BMX residents who have nowhere to ride in Amherst.</p>
   </div>
   <div class="demand-bars" id="demandBars">
     <div class="demand-row" data-val="2286" data-max="2286"><div class="demand-label">Pickleball</div><div class="demand-bar-wrap"><div class="demand-bar-fill"></div></div><div class="demand-val">2,286</div></div>
@@ -348,10 +341,10 @@
 
 <!-- PHOTO BAND 1 -->
 <div class="photo-band">
-  <div class="photo-band-item"><img src="reed-geiger-JGQj_A-jMsE-unsplash_2.png" alt="Skateboarder doing trick"></div>
-  <div class="photo-band-item"><img src="feranmi-ogundeko-wmpzbI-QKo0-unsplash_1.png" alt="Kids at skatepark"></div>
-  <div class="photo-band-item"><img src="hert-niks-nctgOMFOMEo-unsplash_2.png" alt="Skatepark in autumn"></div>
-  <div class="photo-band-item"><img src="gayatri-malhotra-Oe2QwRgaeOw-unsplash_2.png" alt="Skater girl at park"></div>
+  <div class="photo-band-item"><img src="images/reed-geiger-JGQj_A-jMsE-unsplash_2.png" alt="Skateboarder doing trick"></div>
+  <div class="photo-band-item"><img src="images/feranmi-ogundeko-wmpzbI-QKo0-unsplash_1.png" alt="Kids at skatepark"></div>
+  <div class="photo-band-item"><img src="images/hert-niks-nctgOMFOMEo-unsplash_2.png" alt="Skatepark in autumn"></div>
+  <div class="photo-band-item"><img src="images/gayatri-malhotra-Oe2QwRgaeOw-unsplash_2.png" alt="Skater girl at park"></div>
 </div>
 
 <!-- BENEFITS -->
@@ -371,14 +364,14 @@
 <!-- PHOTO FEATURE: Amherst aerial -->
 <div class="photo-feature">
   <div class="photo-feature-img" style="position:relative">
-    <img src="IMG_6166AmherstHighSchool_OKaSm_2.png" alt="Aerial view of Amherst High School campus">
+    <img src="images/IMG_6166AmherstHighSchool_OKaSm_2.png" alt="Aerial view of Amherst High School campus">
     <div class="photo-credit">Aerial view of the Amherst High School Campus. Photo: Chris Condit</div>
   </div>
   <div class="photo-feature-text">
     <div class="section-label" style="color:var(--orange)">Our Neighborhood</div>
-    <h2 class="section-title">A Park<br>For This Place</h2>
-    <p class="need-body" style="color:rgba(255,255,255,0.6)">The proposed site is near Community Field, adjacent to War Memorial Pool — steps from Amherst Regional High School, where <strong style="color:white">thousands of young people</strong> gather every day with nowhere to go after school.</p>
-    <p class="need-body" style="color:rgba(255,255,255,0.6);margin-top:16px">This is a community that already has football fields, baseball diamonds, tennis courts, and a pool. A skatepark is the obvious next step — an investment in the kids who don't fit the mold of organized team sports.</p>
+    <h2 class="section-title">Finding the<br>Right Site</h2>
+    <p class="need-body" style="color:rgba(255,255,255,0.6)">Site selection is a core part of Phase 1. The Amherst High School campus area — with its proximity to Community Field, War Memorial Pool, and thousands of students — is one of several promising candidate locations being evaluated.</p>
+    <p class="need-body" style="color:rgba(255,255,255,0.6);margin-top:16px">Amherst already has football fields, baseball diamonds, tennis courts, and a pool. A skatepark is the obvious next step — a Phase 1 study will identify the right location through community input and due diligence.</p>
   </div>
 </div>
 
@@ -402,10 +395,10 @@
 
 <!-- PHOTO BAND 2 -->
 <div class="photo-band">
-  <div class="photo-band-item"><img src="141114100238459_David_Lebuser_0_2.png" alt="Wheelchair skater in bowl"></div>
-  <div class="photo-band-item"><img src="IMG_20250929_220900_1.png" alt="Young skater at a local park"></div>
-  <div class="photo-band-item"><img src="children-613196_1920_2.png" alt="Kids on BMX bikes"></div>
-  <div class="photo-band-item"><img src="pexels-vladimir-chake-83497249-8857823_1.png" alt="Kid on scooter at skatepark"></div>
+  <div class="photo-band-item"><img src="images/141114100238459_David_Lebuser_0_2.png" alt="Wheelchair skater in bowl"></div>
+  <div class="photo-band-item"><img src="images/IMG_20250929_220900_1.png" alt="Young skater at a local park"></div>
+  <div class="photo-band-item"><img src="images/children-613196_1920_2.png" alt="Kids on BMX bikes"></div>
+  <div class="photo-band-item"><img src="images/pexels-vladimir-chake-83497249-8857823_1.png" alt="Kid on scooter at skatepark"></div>
 </div>
 
 <!-- CONCERNS -->
@@ -473,15 +466,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
-    <svg viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px">
-      <rect width="10.6692" height="53.3461" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 82.0861 62.3889)" fill="#D4622A"/>
-      <circle cx="18.0707" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <circle cx="94.8891" cy="90.9565" r="12.8707" stroke="white" stroke-width="8.4"/>
-      <path d="M56.2302 21.4058L53.2791 21.6851L53.2792 5.68131L59.4714 5.6813L100.928 77.4865L91.6883 82.8211L56.2302 21.4058Z" fill="white"/>
-      <path d="M56.5258 21.1311L53.2792 5.68131L11.6692 77.4865L20.909 82.8211L56.5258 21.1311Z" fill="white"/>
-      <rect x="2.02748" y="9.79639" width="10.1898" height="60.1534" transform="rotate(-25 2.02748 9.79639)" fill="white"/>
-      <rect width="10.1898" height="60.1534" transform="matrix(-0.906308 -0.422618 -0.422618 0.906308 110.889 9.79639)" fill="white"/>
-    </svg>
+    <img src="images/All-Wheels_Amherst_Logo_v2_-_multi.svg" alt="AWA" style="width:32px;height:32px">
     <div class="footer-name">All-Wheels Amherst</div>
   </div>
   <ul class="footer-links">
@@ -515,7 +500,7 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 const barObserver = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ document.querySelectorAll('.demand-row').forEach(row=>{ const val=parseInt(row.dataset.val); const max=parseInt(row.dataset.max); row.querySelector('.demand-bar-fill').style.width=(val/max*100).toFixed(1)+'%'; }); barObserver.disconnect(); } }); },{ threshold:0.3 });
 const barsEl=document.getElementById('demandBars'); if(barsEl) barObserver.observe(barsEl);
 
-function toggleMobileNav(){ const links=document.querySelector('.nav-links'); const isOpen=links.style.display==='flex'; links.style.display=isOpen?'none':'flex'; links.style.flexDirection='column'; links.style.position='absolute'; links.style.top='64px'; links.style.right='0'; links.style.background='#111'; links.style.padding='24px 32px'; links.style.gap='20px'; }
+function toggleMobileNav(){ document.querySelector('.nav-links').classList.toggle('mobile-open'); }
 </script>
 </body>
 </html>
