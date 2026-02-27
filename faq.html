@@ -450,3 +450,14 @@ function toggleFaq(el) {
   });
 
   // Open clicke
+  const clicked = el.parentElement;
+    if (!isOpen) {
+      clicked.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  function toggleMobileNav(){ document.querySelector('.nav-links').classList.toggle('mobile-open'); }
+</script>
+</body>
+</html>
